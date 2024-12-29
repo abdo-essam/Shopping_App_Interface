@@ -32,7 +32,5 @@ The code is organized into separate widgets for better maintainability:
 
 ## Screenshots
 
-1. **Screenshot 1**: Added with the caption "Page view and Product Grid" using `![Screenshot](./Screenshot.png)`.
-2. **Screenshot 2**: Added with the caption "Hot Offers" using `![Screenshot2](./Screenshot2.png)`.
-
-<video src="./Screen_recording.webm" controls="controls" style="max-width: 100%; height: auto;"> Your browser does not support the video tag. </video>
+1. **Screenshot 1**: Added with the caption "Page view and Product Grid" using ![Screenshot](Screenshot.png).
+2. **Screenshot 2**: Added with the caption "Hot Offers" using ![Screenshot2](Screenshot2.png).
