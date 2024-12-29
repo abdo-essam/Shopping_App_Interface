@@ -31,6 +31,6 @@ The code is organized into separate widgets for better maintainability:
 3. Run `flutter run`
 
 ## Screenshots
-
-1. **Screenshot 1**: Added with the caption "Page view and Product Grid" using ![Screenshot](Screenshot.png).
-2. **Screenshot 2**: Added with the caption "Hot Offers" using ![Screenshot2](Screenshot2.png).
+| Page view and Product Grid | Hot Offers |
+|---|---|
+| <img src="Screenshot.png" width="250"> | <img src="Screenshot2.png" width="250"> |
