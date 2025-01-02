@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'home/home_screen.dart';
+import 'screens/signup_screen.dart';
 
 void main() {
   runApp(const ShoppingApp());
@@ -17,7 +17,7 @@ class ShoppingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
