@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../animations/fade_page_route.dart';
 import '../utils/dialog_utils.dart';
 import '../utils/snackbar_utils.dart';
 import '../utils/style_constants.dart';
@@ -31,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         onClose: () {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            FadePageRoute(page: const HomeScreen()),
           );
         },
       );

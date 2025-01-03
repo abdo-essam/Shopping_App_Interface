@@ -1,17 +1,22 @@
 # Flutter Shopping App Interface
 
-A modern shopping app interface created with Flutter, featuring a secure signup process and an intuitive shopping interface.
+A modern shopping app interface created with Flutter, featuring animated transitions, secure signup, and an intuitive shopping interface.
 
 ## Features
 
+### Animations
+- Smooth fade transition between signup and shopping screens
+- Custom page route animation implementation
+- Professional screen transitions
+
 ### Authentication
 - Secure signup screen with form validation:
-    - Full name with capitalized first letter validation
-    - Email format validation (@)
-    - Password minimum length (6 characters)
-    - Password confirmation matching
-    - Real-time validation feedback via SnackBar
-    - Success confirmation dialog
+  - Full name with capitalized first letter validation
+  - Email format validation (@)
+  - Password minimum length (6 characters)
+  - Password confirmation matching
+  - Real-time validation feedback via SnackBar
+  - Success confirmation dialog
 
 ### Shopping Interface
 - Responsive design using MediaQuery
@@ -28,23 +33,34 @@ The code is organized into separate modules for better maintainability:
 
 ### Screens
 - `lib/screens/`
-    - `signup_screen.dart`: User registration interface
-    - `home_screen.dart`: Main shopping interface
+  - `signup_screen.dart`: User registration interface
+  - `home_screen.dart`: Main shopping interface
+
+### Animations
+- `lib/animations/`
+  - `fade_page_route.dart`: Custom fade transition
 
 ### Widgets
 - `lib/widgets/signUp/`
-    - `signup_form_field.dart`: Reusable form input component
-    - `signup_button.dart`: Custom signup button
+  - `signup_form_field.dart`: Reusable form input component
+  - `signup_button.dart`: Custom signup button
 - `lib/widgets/shopping/`
-    - `product_page_view.dart`: Product carousel
-    - `product_grid.dart`: Products display grid
-    - `hot_offers_list.dart`: Horizontal offers list
+  - `product_page_view.dart`: Product carousel
+  - `product_grid.dart`: Products display grid
+  - `hot_offers_list.dart`: Horizontal offers list
 
 ### Utils
 - `lib/utils/`
-    - `dialog_utils.dart`: Dialog components
-    - `snackbar_utils.dart`: Notification components
-    - `style_constants.dart`: App styling constants
+  - `dialog_utils.dart`: Dialog components
+  - `snackbar_utils.dart`: Notification components
+  - `style_constants.dart`: App styling constants
+
+## Animation Implementation
+
+The app uses custom page route transitions to create smooth animations:
+- FadePageRoute: Creates a fade transition between screens
+- Duration: 500 milliseconds for optimal user experience
+- Smooth opacity animation from 0 to 1
 
 ## How to Run
 
@@ -54,17 +70,23 @@ The code is organized into separate modules for better maintainability:
 
 ## Screenshots
 
-| Signup Screen | Shopping Home | Hot Offers |
-|---|---|---|
-| <img src="signup_screen.png" width="250"> | <img src="Screenshot.png" width="250"> | <img src="Screenshot2.png" width="250"> |
+| Signup Screen | Shopping Home |
+|---|---|
+| <img src="signup_screen.png" width="250"> | <img src="shopping_screen.png" width="250"> |
 
 ## Implementation Details
+
+### Animation
+- Custom PageRouteBuilder implementation
+- Smooth fade transition effect
+- Configurable animation duration
+- Clean animation code structure
 
 ### Signup Screen
 - Centered form layout with card design
 - Real-time validation feedback
 - Secure password input with visibility toggle
-- Success dialog with navigation to shopping screen
+- Success dialog with animated navigation
 
 ### Shopping Interface
 - Dynamic product carousel
@@ -74,6 +96,7 @@ The code is organized into separate modules for better maintainability:
 
 ## Future Improvements
 
+- Add more animation types
 - Implement login functionality
 - Add user profile management
 - Integrate with backend services
