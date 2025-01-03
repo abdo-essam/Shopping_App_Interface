@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../lang/app_localizations.dart';
 import '../../utils/Constants.dart';
 
 class HotOffersList extends StatelessWidget {
@@ -7,6 +8,7 @@ class HotOffersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return SizedBox(
       height: 200,
       child: ListView.builder(
@@ -27,7 +29,7 @@ class HotOffersList extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Hot Offer ${index + 1}'),
+                    child: Text(localizations.hotOfferWithNumber(index + 1)),
                   ),
                 ],
               ),

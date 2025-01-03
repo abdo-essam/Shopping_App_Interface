@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app_interface/utils/snackbar_utils.dart';
 
+import '../../lang/app_localizations.dart';
 import '../../utils/Constants.dart';
 
 class ProductGrid extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProductGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -34,7 +36,7 @@ class ProductGrid extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Product ${index + 1}'),
+                    Text(localizations.productWithNumber(index + 1)),
                     IconButton(
                       icon: const Icon(Icons.add_shopping_cart),
                       onPressed: () => SnackBarUtils.showSuccessSnackBar(context: context, message: "Product ${index + 1} Added to Cart"),

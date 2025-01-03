@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../lang/app_localizations.dart';
+
 class DialogUtils {
   static void showSuccessDialog({
     required BuildContext context,
@@ -7,6 +9,7 @@ class DialogUtils {
     required String content,
     required VoidCallback onClose,
   }) {
+    final localizations = AppLocalizations.of(context);
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -19,7 +22,7 @@ class DialogUtils {
               Navigator.pop(context); // Close dialog
               onClose();
             },
-            child: const Text('Close'),
+            child: Text(localizations.close),
           ),
         ],
       ),

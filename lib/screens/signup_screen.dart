@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../animations/fade_page_route.dart';
+import '../lang/app_localizations.dart';
 import '../utils/dialog_utils.dart';
 import '../utils/snackbar_utils.dart';
 import '../utils/style_constants.dart';
@@ -23,12 +24,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
 
+
   void _handleSignUp() {
+    final localizations = AppLocalizations.of(context);
     if (_formKey.currentState!.validate()) {
       DialogUtils.showSuccessDialog(
         context: context,
-        title: 'Success',
-        content: 'Account created successfully',
+        title: localizations.success,
+        content: localizations.accountCreated,
         onClose: () {
           Navigator.pushReplacement(
             context,
@@ -41,6 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -53,16 +57,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 20),
-                    Text('Create Account', style: StyleConstants.headlineStyle),
+                    Text(localizations.createAccount, style: StyleConstants.headlineStyle),
                     const SizedBox(height: 10),
                     Text(
-                      'Please fill in the form to continue',
+                      localizations.fillForm,
                       style: StyleConstants.subtitleStyle,
                     ),
                     const SizedBox(height: 30),
                     SignUpFormField(
                       controller: _fullNameController,
-                      label: 'Full Name',
+                      label: localizations.fullName,
                       prefixIcon: Icons.person_outline,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -81,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 20),
                     SignUpFormField(
                       controller: _emailController,
-                      label: 'Email',
+                      label: localizations.email,
                       prefixIcon: Icons.email_outlined,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -100,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 20),
                     SignUpFormField(
                       controller: _passwordController,
-                      label: 'Password',
+                      label: localizations.password,
                       prefixIcon: Icons.lock_outline,
                       isPassword: true,
                       isVisible: _isPasswordVisible,
@@ -126,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 20),
                     SignUpFormField(
                       controller: _confirmPasswordController,
-                      label: 'Confirm Password',
+                      label: localizations.confirmPassword,
                       prefixIcon: Icons.lock_outline,
                       isPassword: true,
                       isVisible: _isConfirmPasswordVisible,

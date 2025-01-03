@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../lang/app_localizations.dart';
 import '../widgets/home/product_grid.dart';
 import '../widgets/home/hot_offers_list.dart';
 import '../widgets/home/product_page_view.dart';
@@ -13,12 +14,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Shopping App'),
+        title: Text(localizations.appTitle),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -26,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Our Products',
+               Text(
+                localizations.ourProducts,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -40,8 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               const ProductGrid(),
               const SizedBox(height: 20),
-              const Text(
-                'Hot Offers',
+               Text(
+                localizations.hotOffers,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

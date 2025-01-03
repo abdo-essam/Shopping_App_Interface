@@ -1,8 +1,14 @@
 # Flutter Shopping App Interface
 
-A modern shopping app interface created with Flutter, featuring animated transitions, secure signup, and an intuitive shopping interface.
+A modern shopping app interface created with Flutter, featuring animated transitions, secure signup, and featuring localization support for English and Arabic.
 
 ## Features
+
+### Localization
+- Full support for English and Arabic languages
+- RTL layout support for Arabic
+- Localized strings for all UI elements
+- Easy to add more languages
 
 ### Animations
 - Smooth fade transition between signup and shopping screens
@@ -25,7 +31,6 @@ A modern shopping app interface created with Flutter, featuring animated transit
 - Horizontal scrollable hot offers list
 
 ## Code Structure
-
 The code is organized into separate modules for better maintainability:
 
 ### Core Files
@@ -62,6 +67,14 @@ The app uses custom page route transitions to create smooth animations:
 - Duration: 500 milliseconds for optimal user experience
 - Smooth opacity animation from 0 to 1
 
+## Localization Implementation
+The app implements localization using:
+- Custom AppLocalizations class
+- Localization delegate
+- Support for English and Arabic
+- RTL layout support
+- Centralized string management
+
 ## How to Run
 
 1. Clone the repository
@@ -70,9 +83,9 @@ The app uses custom page route transitions to create smooth animations:
 
 ## Screenshots
 
-| Signup Screen | Shopping Home |
-|---|---|
-| <img src="signup_screen.png" width="250"> | <img src="shopping_screen.png" width="250"> |
+| Signup Screen | Shopping Home | Signup Screen Arabic | Shopping Home Arabic |
+|---|---|---|---|
+| <img src="signup_screen.png" width="250"> | <img src="shopping_screen.png" width="250"> | <img src="signup_screen_ar.png" width="250"> |<img src="shopping_screen_ar.png" width="250"> |
 
 ## Implementation Details
 
