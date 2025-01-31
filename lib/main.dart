@@ -31,7 +31,7 @@ class ShoppingApp extends StatelessWidget {
         Locale('en'),
         Locale('ar'),
       ],
-      locale: const Locale('ar'),
+      locale: const Locale('en'),
       title: "Shopping App",
       theme: ThemeData(
         primarySwatch: Colors.blue,
