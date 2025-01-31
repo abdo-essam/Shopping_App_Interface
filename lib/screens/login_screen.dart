@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import '../animations/fade_page_route.dart';
 import '../lang/app_localizations.dart';
 import '../utils/dialog_utils.dart';
@@ -8,26 +8,23 @@ import '../utils/style_constants.dart';
 import '../widgets/signUp/signup_button.dart';
 import '../widgets/signUp/signup_form_field.dart';
 import 'home_screen.dart';
-import 'login_screen.dart';
+import 'signup_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   bool _isPasswordVisible = false;
-  bool _isConfirmPasswordVisible = false;
   bool _isLoading = false;
 
-  Future<void> _handleSignUp() async {
+  Future<void> _handleLogin() async {
     final localizations = AppLocalizations.of(context);
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -35,21 +32,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
 
       try {
-        // Create user with email and password
-        final UserCredential userCredential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
-
-        // Update user profile with full name
-        await userCredential.user?.updateDisplayName(_fullNameController.text.trim());
 
         if (mounted) {
           DialogUtils.showSuccessDialog(
             context: context,
             title: localizations.success,
-            content: localizations.accountCreated,
+            content: localizations.welcomeWithName(
+              FirebaseAuth.instance.currentUser?.displayName ?? '',
+            ),
             onClose: () {
               Navigator.pushReplacement(
                 context,
@@ -61,17 +55,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
       } on FirebaseAuthException catch (e) {
         String errorMessage;
         switch (e.code) {
-          case 'weak-password':
-            errorMessage = localizations.weakPassword;
+          case 'user-not-found':
+            errorMessage = localizations.invalidEmail;
             break;
-          case 'email-already-in-use':
-            errorMessage = localizations.emailAlreadyInUse;
+          case 'wrong-password':
+            errorMessage = localizations.loginError;
             break;
           case 'invalid-email':
             errorMessage = localizations.invalidEmail;
             break;
+          case 'user-disabled':
+            errorMessage = localizations.authError;
+            break;
           default:
-            errorMessage = localizations.signUpError;
+            errorMessage = localizations.loginError;
         }
         SnackBarUtils.showErrorSnackBar(
           context: context,
@@ -80,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       } catch (e) {
         SnackBarUtils.showErrorSnackBar(
           context: context,
-          message: localizations.signUpError,
+          message: localizations.networkError,
         );
       } finally {
         if (mounted) {
@@ -89,6 +86,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
           });
         }
       }
+    }
+  }
+
+  Future<void> _handleResetPassword() async {
+    final localizations = AppLocalizations.of(context);
+    if (_emailController.text.isEmpty) {
+      SnackBarUtils.showErrorSnackBar(
+        context: context,
+        message: localizations.enterEmail,
+      );
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: _emailController.text.trim(),
+      );
+      if (mounted) {
+        SnackBarUtils.showSuccessSnackBar(
+          context: context,
+          message: localizations.resetPasswordSuccess,
+        );
+      }
+    } catch (e) {
+      SnackBarUtils.showErrorSnackBar(
+        context: context,
+        message: localizations.resetPasswordError,
+      );
     }
   }
 
@@ -108,7 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      localizations.createAccount,
+                      localizations.login,
                       style: StyleConstants.headlineStyle,
                     ),
                     const SizedBox(height: 10),
@@ -117,25 +142,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: StyleConstants.subtitleStyle,
                     ),
                     const SizedBox(height: 30),
-                    SignUpFormField(
-                      controller: _fullNameController,
-                      label: localizations.fullName,
-                      prefixIcon: Icons.person_outline,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return localizations.enterFullName;
-                        }
-                        if (value[0] != value[0].toUpperCase()) {
-                          SnackBarUtils.showErrorSnackBar(
-                            context: context,
-                            message: localizations.capitalizeFirst,
-                          );
-                          return localizations.capitalizeFirst;
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 20),
                     SignUpFormField(
                       controller: _emailController,
                       label: localizations.email,
@@ -180,31 +186,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 20),
-                    SignUpFormField(
-                      controller: _confirmPasswordController,
-                      label: localizations.confirmPassword,
-                      prefixIcon: Icons.lock_outline,
-                      isPassword: true,
-                      isVisible: _isConfirmPasswordVisible,
-                      onVisibilityToggle: () {
-                        setState(() {
-                          _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                        });
-                      },
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return localizations.confirmYourPassword;
-                        }
-                        if (value != _passwordController.text) {
-                          SnackBarUtils.showErrorSnackBar(
-                            context: context,
-                            message: localizations.passwordsMatch,
-                          );
-                          return localizations.passwordsMatch;
-                        }
-                        return null;
-                      },
+                    const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: _handleResetPassword,
+                        child: Text(localizations.resetPassword),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     _isLoading
@@ -212,27 +200,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         : Column(
                       children: [
                         SignUpButton(
-                          onPressed: _handleSignUp,
-                          text: localizations.signUp,
+                          onPressed: _handleLogin,
+                          text: localizations.login,
                         ),
                         const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              localizations.alreadyHaveAccount,
+                              localizations.createAccount,
                               style: StyleConstants.subtitleStyle,
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   FadePageRoute(
-                                    page: const LoginScreen(),
+                                    page: const SignUpScreen(),
                                   ),
                                 );
                               },
-                              child: Text(localizations.login),
+                              child: Text(localizations.signUp),
                             ),
                           ],
                         ),
@@ -250,10 +238,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
-    _fullNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 }

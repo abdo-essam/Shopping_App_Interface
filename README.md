@@ -3,6 +3,22 @@
 A modern shopping app interface created with Flutter, featuring animated transitions, secure signup, and featuring localization support for English and Arabic.
 
 ## Features
+- Email & Password Authentication
+- Login Screen
+- Sign Up Screen
+- Form Validation
+- Error Handling
+- Loading States
+- Secure Password Storage
+- Navigation Flow
+
+## Firebase Setup
+1. Create a Firebase project
+2. Enable Email/Password authentication
+3. Add your Firebase configuration
+4. Install Firebase CLI
+5. Initialize Firebase in your Flutter project
+
 
 ### Localization
 - Full support for English and Arabic languages
@@ -40,6 +56,7 @@ The code is organized into separate modules for better maintainability:
 - `lib/screens/`
   - `signup_screen.dart`: User registration interface
   - `home_screen.dart`: Main shopping interface
+  - 'login_screen.dart': User login interface
 
 ### Animations
 - `lib/animations/`
@@ -64,7 +81,7 @@ The code is organized into separate modules for better maintainability:
 
 The app uses custom page route transitions to create smooth animations:
 - FadePageRoute: Creates a fade transition between screens
-- Duration: 500 milliseconds for optimal user experience
+- Duration: 400 milliseconds for optimal user experience
 - Smooth opacity animation from 0 to 1
 
 ## Localization Implementation

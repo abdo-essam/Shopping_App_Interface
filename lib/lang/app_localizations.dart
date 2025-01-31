@@ -38,6 +38,22 @@ class AppLocalizations {
       'hotOffer': 'Hot Offer',
       'alreadyHaveAccount': 'Already have an account?',
       'login': 'Login',
+      // New Firebase-related translations
+      'weakPassword': 'The password provided is too weak',
+      'emailAlreadyInUse': 'An account already exists for that email',
+      'invalidEmail': 'Please enter a valid email address',
+      'signUpError': 'An error occurred during sign up',
+      'networkError': 'Network error occurred. Please check your connection',
+      'authError': 'Authentication error occurred',
+      'loading': 'Loading...',
+      'retry': 'Retry',
+      'cancel': 'Cancel',
+      'signOut': 'Sign Out',
+      'welcome': 'Welcome',
+      'loginError': 'Login failed. Please check your credentials',
+      'resetPassword': 'Reset Password',
+      'resetPasswordSuccess': 'Password reset email has been sent',
+      'resetPasswordError': 'Failed to send password reset email',
     },
     'ar': {
       'appTitle': 'تطبيق التسوق',
@@ -67,10 +83,26 @@ class AppLocalizations {
       'hotOffer': 'عرض حصري',
       'alreadyHaveAccount': 'هل لديك حساب؟',
       'login': 'تسجيل الدخول',
+      // New Firebase-related translations in Arabic
+      'weakPassword': 'كلمة المرور ضعيفة جداً',
+      'emailAlreadyInUse': 'البريد الإلكتروني مستخدم بالفعل',
+      'invalidEmail': 'البريد الإلكتروني غير صالح',
+      'signUpError': 'حدث خطأ أثناء التسجيل',
+      'networkError': 'حدث خطأ في الشبكة. يرجى التحقق من اتصالك',
+      'authError': 'حدث خطأ في المصادقة',
+      'loading': 'جاري التحميل...',
+      'retry': 'إعادة المحاولة',
+      'cancel': 'إلغاء',
+      'signOut': 'تسجيل الخروج',
+      'welcome': 'مرحباً',
+      'loginError': 'فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد',
+      'resetPassword': 'إعادة تعيين كلمة المرور',
+      'resetPasswordSuccess': 'تم إرسال رابط إعادة تعيين كلمة المرور',
+      'resetPasswordError': 'فشل إرسال رابط إعادة تعيين كلمة المرور',
     },
   };
 
-  // Add getters for all translations
+  // Existing getters
   String get appTitle => _localizedValues[locale.languageCode]!['appTitle']!;
   String get ourProducts => _localizedValues[locale.languageCode]!['ourProducts']!;
   String get hotOffers => _localizedValues[locale.languageCode]!['hotOffers']!;
@@ -99,11 +131,34 @@ class AppLocalizations {
   String get alreadyHaveAccount => _localizedValues[locale.languageCode]!['alreadyHaveAccount']!;
   String get login => _localizedValues[locale.languageCode]!['login']!;
 
+  // New Firebase-related getters
+  String get weakPassword => _localizedValues[locale.languageCode]!['weakPassword']!;
+  String get emailAlreadyInUse => _localizedValues[locale.languageCode]!['emailAlreadyInUse']!;
+  String get invalidEmail => _localizedValues[locale.languageCode]!['invalidEmail']!;
+  String get signUpError => _localizedValues[locale.languageCode]!['signUpError']!;
+  String get networkError => _localizedValues[locale.languageCode]!['networkError']!;
+  String get authError => _localizedValues[locale.languageCode]!['authError']!;
+  String get loading => _localizedValues[locale.languageCode]!['loading']!;
+  String get retry => _localizedValues[locale.languageCode]!['retry']!;
+  String get cancel => _localizedValues[locale.languageCode]!['cancel']!;
+  String get signOut => _localizedValues[locale.languageCode]!['signOut']!;
+  String get welcome => _localizedValues[locale.languageCode]!['welcome']!;
+  String get loginError => _localizedValues[locale.languageCode]!['loginError']!;
+  String get resetPassword => _localizedValues[locale.languageCode]!['resetPassword']!;
+  String get resetPasswordSuccess => _localizedValues[locale.languageCode]!['resetPasswordSuccess']!;
+  String get resetPasswordError => _localizedValues[locale.languageCode]!['resetPasswordError']!;
+
+  // Existing helper methods
   String productWithNumber(int number) {
     return '${_localizedValues[locale.languageCode]!['product']!} $number';
   }
 
   String hotOfferWithNumber(int number) {
     return '${_localizedValues[locale.languageCode]!['hotOffer']!} $number';
+  }
+
+  // New helper method for welcome message with name
+  String welcomeWithName(String name) {
+    return '${_localizedValues[locale.languageCode]!['welcome']!}, $name';
   }
 }

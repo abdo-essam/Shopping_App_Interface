@@ -27,28 +27,45 @@ class StyleConstants {
     );
   }
 
-  static ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-    minimumSize: const Size(double.infinity, 55),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
-    backgroundColor: Colors.blue,
-  );
-
-  static TextStyle headlineStyle = const TextStyle(
-    fontSize: 28,
+  static const TextStyle headlineStyle = TextStyle(
+    fontSize: 24,
     fontWeight: FontWeight.bold,
-    color: Colors.blue,
   );
 
-  static TextStyle subtitleStyle = const TextStyle(
+  static const TextStyle subtitleStyle = TextStyle(
     fontSize: 16,
     color: Colors.grey,
   );
 
-  static TextStyle buttonTextStyle = const TextStyle(
-    fontSize: 18,
+  static const TextStyle buttonTextStyle = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+  );
+
+  static const TextStyle outlinedButtonTextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: Colors.blue, // Or your primary color
+  );
+
+  // Button styles
+  static final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
+    foregroundColor: Colors.white,
+    backgroundColor: Colors.blue, // Or your primary color
+    padding: const EdgeInsets.symmetric(vertical: 16),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
+    elevation: 2,
+  );
+
+  static final ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
+    foregroundColor: Colors.blue, // Or your primary color
+    side: const BorderSide(color: Colors.blue), // Or your primary color
+    padding: const EdgeInsets.symmetric(vertical: 16),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
   );
 }
