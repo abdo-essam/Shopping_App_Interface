@@ -11,6 +11,11 @@ A modern shopping app interface created with Flutter, featuring animated transit
 - Loading States
 - Secure Password Storage
 - Navigation Flow
+- Firebase Authentication
+- Biometric Authentication
+- Profile Management
+- Secure Profile Access
+
 
 ## Firebase Setup
 1. Create a Firebase project
@@ -108,7 +113,9 @@ The app implements localization using:
 |---|---|---|---|
 | <img src="signup_screen.png" width="250"> | <img src="signup_screen_ar.png" width="250"> | <img src="login_screen.png" width="250"> | <img src="login_screen_ar.png" width="250"> |
 
-
+| Profile Page                        |
+|-------------------------------------|
+| <img src="profile.png" width="250"> |
 ## Implementation Details
 
 ### Animation

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app_interface/widgets/profile_icon_button.dart';
 import '../lang/app_localizations.dart';
 import '../widgets/home/product_grid.dart';
 import '../widgets/home/hot_offers_list.dart';
@@ -21,6 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(localizations.appTitle),
+        actions: [
+          ProfileIconButton()
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
