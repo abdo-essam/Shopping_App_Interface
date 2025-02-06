@@ -105,13 +105,13 @@ The app implements localization using:
 
 ## Screenshots
 
-| Shopping Home Arabic | Shopping Home |
-|---|---|
-| <img src="shopping_screen_ar.png" width="250"> | <img src="shopping_screen.png" width="250"> |
-
 | Signup Screen | Signup Screen Arabic | Login Screen | Login Screen Arabic |
 |---|---|---|---|
 | <img src="signup_screen.png" width="250"> | <img src="signup_screen_ar.png" width="250"> | <img src="login_screen.png" width="250"> | <img src="login_screen_ar.png" width="250"> |
+
+| Shopping Home Arabic | Shopping Home |
+|---|---|
+| <img src="shopping_screen_ar.png" width="250"> | <img src="shopping_screen.png" width="250"> |
 
 | Profile Page                        |
 |-------------------------------------|
