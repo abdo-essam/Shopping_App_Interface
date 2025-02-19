@@ -25,9 +25,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               ProfileHeader(
                 imageUrl: user?.photoURL,
-                onImageTap: () {
-                  // Handle profile image update
-                },
+                onImageTap: () {},
               ),
               const SizedBox(height: 24),
               ProfileInfoCard(
